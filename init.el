@@ -1,108 +1,103 @@
-;; Path setting
-(setq load-path 
+;;  Path setting 
+(setq load-path
       (append 
        (list
 	(expand-file-name "~/.emacs.d")
-	(expand-file-name "~/.emacs.d/init")
+	(expand-file-name "~/.emacs.d/lisp/init")
 	(expand-file-name "~/.emacs.d/lisp")
+	(expand-file-name "~/.emacs.d/init")
+	(expand-file-name "~/.emacs.d/share/auto-install")
+	(expand-file-name "~/.emacs.d/plugins")
+	(expand-file-name "~/lib/emacs/init")
+	(expand-file-name "~/lib/emacs/lisp")
 	(expand-file-name "~/.emacs.d/lisp/skk")
-	(expand-file-name "~/.emacs.d/auto-install")
-	(expand-file-name "/Applications/Emacs.app/Contents/Resources/site-lisp")
-	(expand-file-name "/usr/local/share/emacs/site-lisp/mew")
-	) load-path))
+	"/Applications/Emacs.app/Contents/Resources/site-lisp"
+	"/Applications/Emacs.app/Contents/Resources/lisp"
+	) load-path ))
+
+;; OS depend settings
+(cond ((string= window-system "mac")
+       (load "macosx-setting"))
+      ((string= window-system "w32")
+       (load "windows-settings"))
+      ((string= window-system "x")
+       (load "linux-settings"))
+      ((not window-system)
+       (load "console-settings")))
+
+;; Machine depend settings
+(cond
+ ((string= system-name "CARLISLE")
+  (load "office-settings")))
+ 
+
+(setq Info-additional-directory-list
+      (list (expand-file-name "~/lib/info")))
 
 ;; Disable startup-message
 (setq inhibit-startup-message t)
 
 ;; Language Setting (Japanese)
-(set-language-environment "Japanese")
-;(set-default-coding-systems 'euc-jp)
-;(set-buffer-file-coding-system 'euc-jp-unix)
-;(set-terminal-coding-system 'euc-jp)
-;(set-keyboard-coding-system 'euc-jp)
+(set-language-environment 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (set-default-coding-systems 'utf-8)
-(set-buffer-file-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
 
-;; font
+;; Key Binding
+(define-key global-map "\C-h" 'delete-backward-char) 
+(define-key global-map "\M-?" 'help-for-help)
+
+
+
 
 ;; Color setting 
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
 (set-foreground-color "white")
 (set-background-color "#333333")
 (set-cursor-color     "green")
 (setq transient-mark-mode t)
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
 
 ;; Disable bars
-(setq ns-command-modifier (quote meta))
-(setq ns-alternate-modifier (quote super))
-(setq scroll-bar-mode-explicit nil)
-(setq tool-bar nil)
-(setq menu-bar nil)
-
-;; fontlock-mode
-;;(load "fontlock_setup.el")
-;; gtag-mode
-;;(load "setup_gtags.el")
-;; cc-mode
-;;(load "setup_ccmode.el")
-;;(load "ccmodesetup.el")
-
-;; Mailer (mew)
-;;(load "setup_mew.el")
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+;;(menu-bar-mode -1)
 
 
 
-;; Dictionary (sdic)
-;;(load "sdic_setup.el")
 
-;; Dictionary (lookup)
-;;(load "setup_lookup.el")
+(load "setup_skk") ;; SKK 
+(load "setup_fontlock") ;; fontlock
+(load "setup_ccmode") ;; cc-mode
+;;(load "setup_matlab") ;; matlab-mode
+;;(load "setup_navi2ch") ;; navi2ch
+(load "setup_gtags") ;; gtag
+;;(load "setup_gauche") ;; Gauche
+;;(load "setup_setnu") ;; setnu
+(load "setup_anything") ;; anything
+(load "setup_autocomplete") ;; autocomplete
+(load "setup_yasnippet.el") ;; yasnisppet
+(load "setup_moccur") ;; moccur
+(load "setup_wdired") ;; wdired
+(load "setup_autoinstall") ;; auto-install
+;;(load "setup_auto_async_byte_compile") ;; auto-async-byte-compile
 
-;; bbs (Navi2ch)
-;;(load "navi2ch_setup.el")
-
-;; bsfilter for mew
-
-;; gtags
-;;(load "gtags_setup.el")
-
-;; MATLAB mode
-
-;; 
-;;(load "matlab_setup.el")
-
-;; Gauche mode
-;;(load "setup_gauche.el")
-
-(setq Info-default-directory-list
-      (cons "~/lib/info" Info-default-directory-list))
-
-
-
-;; wb-line-number
-;; (setq truncate-partial-width-windows nil)
-;; (set-scroll-bar-mode nil)
-;; (setq wb-line-number-scroll-bar t)
-;; (require 'wb-line-number)
-;; (wb-line-number-toggle)
-
-;; setnu plus
-;;(load "setnu+.el")
-(load "setup_skk") 
-(load "setup_mew") 
-(load "setup_fontlock") 
-(load "setup_ccmode")
-(load "setup_anything") 
-(load "setup_autoinstall")
-(load "setup_yasnippet")
-(load "setup_autocomplete")
-(load "setup_wdired")
-(load "setup_moccur")
-(load "setup_recentf")
-(load "setup_twitter")
-(load "setup_lookup")
+;;(require 'auto-complete-extension)
 
 (load "yasima")
+
+(add-hook 'set-language-environment-hook 
+	  (lambda ()
+	    (when (equal "ja_JP.UTF-8" (getenv "LANG"))
+	      (setq default-process-coding-system '(utf-8 . utf-8))
+	      (setq default-file-name-coding-system 'utf-8))
+	    (when (equal "Japanese" current-language-environment)
+	      (setq buffer-file-coding-system' 'utf-8))))
+
+(set-language-environment "Japanese")
+
+(setq visible-bell t)
+(cd "~/")
+

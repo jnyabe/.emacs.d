@@ -13,6 +13,7 @@
 	(expand-file-name "~/.emacs.d/lisp/skk")
 	"/Applications/Emacs.app/Contents/Resources/site-lisp"
 	"/Applications/Emacs.app/Contents/Resources/lisp"
+        (expand-file-name "/usr/local/share/emacs/site-lisp/mew")
 	) load-path ))
 
 ;; OS depend settings
@@ -76,6 +77,8 @@
 (load "setup_gtags") ;; gtag
 ;;(load "setup_gauche") ;; Gauche
 ;;(load "setup_setnu") ;; setnu
+(load "setup_lookup")
+(load "setup_mew")
 (load "setup_anything") ;; anything
 (load "setup_autocomplete") ;; autocomplete
 (load "setup_yasnippet.el") ;; yasnisppet

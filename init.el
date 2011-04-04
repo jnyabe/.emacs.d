@@ -8,8 +8,6 @@
 	(expand-file-name "~/.emacs.d/init")
 	(expand-file-name "~/.emacs.d/share/auto-install")
 	(expand-file-name "~/.emacs.d/plugins")
-	(expand-file-name "~/lib/emacs/init")
-	(expand-file-name "~/lib/emacs/lisp")
 	(expand-file-name "~/.emacs.d/lisp/skk")
 	"/Applications/Emacs.app/Contents/Resources/site-lisp"
 	"/Applications/Emacs.app/Contents/Resources/lisp"

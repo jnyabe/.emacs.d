@@ -17,8 +17,8 @@
 	) load-path ))
 
 ;; OS depend settings
-(cond ((string= window-system "mac")
-       (load "macosx-setting"))
+(cond ((string= window-system "ns")
+       (load "macosx-settings"))
       ((string= window-system "w32")
        (load "windows-settings"))
       ((string= window-system "x")

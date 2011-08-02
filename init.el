@@ -6,7 +6,7 @@
 	(expand-file-name "~/.emacs.d/lisp/init")
 	(expand-file-name "~/.emacs.d/lisp")
 	(expand-file-name "~/.emacs.d/init")
-	(expand-file-name "~/.emacs.d/share/auto-install")
+	(expand-file-name "~/.emacs.d/auto-install")
 	(expand-file-name "~/.emacs.d/plugins")
 	(expand-file-name "~/.emacs.d/lisp/skk")
 	"/Applications/Emacs.app/Contents/Resources/site-lisp"
@@ -65,24 +65,26 @@
 ;;(menu-bar-mode -1)
 
 
+(require 'init-loader)
+(setq init-loader-show-log-after-init nil)
+(init-loader-load "~/.emacs.d/init")
 
-
-(load "setup_skk") ;; SKK 
-(load "setup_fontlock") ;; fontlock
-(load "setup_ccmode") ;; cc-mode
+;;(load "setup_skk") ;; SKK 
+;;(load "setup_fontlock") ;; fontlock
+;;(load "setup_ccmode") ;; cc-mode
 ;;(load "setup_matlab") ;; matlab-mode
 ;;(load "setup_navi2ch") ;; navi2ch
-(load "setup_gtags") ;; gtag
+;;(load "setup_gtags") ;; gtag
 ;;(load "setup_gauche") ;; Gauche
 ;;(load "setup_setnu") ;; setnu
-(load "setup_lookup")
-(load "setup_mew")
-(load "setup_anything") ;; anything
-(load "setup_autocomplete") ;; autocomplete
-(load "setup_yasnippet.el") ;; yasnisppet
-(load "setup_moccur") ;; moccur
-(load "setup_wdired") ;; wdired
-(load "setup_autoinstall") ;; auto-install
+;;(load "setup_lookup")
+;;(load "setup_mew")
+;;(load "setup_anything") ;; anything
+;;(load "setup_autocomplete") ;; autocomplete
+;;(load "setup_yasnippet.el") ;; yasnisppet
+;;(load "setup_moccur") ;; moccur
+;;(load "setup_wdired") ;; wdired
+;;(load "setup_autoinstall") ;; auto-install
 ;;(load "setup_auto_async_byte_compile") ;; auto-async-byte-compile
 
 ;;(require 'auto-complete-extension)

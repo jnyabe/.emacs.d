@@ -90,7 +90,7 @@
 ;;(require 'auto-complete-extension)
 
 (load "yasima")
-
+;;(set-language-environment "Japanese")
 (add-hook 'set-language-environment-hook 
 	  (lambda ()
 	    (when (equal "ja_JP.UTF-8" (getenv "LANG"))
@@ -99,7 +99,7 @@
 	    (when (equal "Japanese" current-language-environment)
 	      (setq buffer-file-coding-system' 'utf-8))))
 
-(set-language-environment "Japanese")
+
 
 (setq visible-bell t)
 (cd "~/")

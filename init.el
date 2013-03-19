@@ -36,14 +36,6 @@
 ;; Disable startup-message
 (setq inhibit-startup-message t)
 
-;; Language Setting (Japanese)
-(set-language-environment 'utf-8)
-(prefer-coding-system 'utf-8)
-
-(set-default-coding-systems 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-buffer-file-coding-system 'utf-8)
 
 ;; Key Binding
 (define-key global-map "\C-h" 'delete-backward-char) 
@@ -100,6 +92,12 @@
 	      (setq buffer-file-coding-system' 'utf-8))))
 
 (set-language-environment "Japanese")
+;; Language Setting (Japanese)
+
+;(set-default-coding-systems 'utf-8)
+;(set-keyboard-coding-system 'utf-8)
+;(set-terminal-coding-system 'utf-8)
+;(set-buffer-file-coding-system 'utf-8)
 
 (setq visible-bell t)
 (cd "~/")

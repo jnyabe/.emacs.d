@@ -8,6 +8,8 @@
   (setq c-indent-level 4)
   (setq tab-width 4)
   (setq indent-tabs-mode t)
+  (setcdr (assoc 'inline-open c-offsets-alist) 0)
+  (setcdr (assoc 'substatement-open c-offsets-alist) 0)
 )
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)

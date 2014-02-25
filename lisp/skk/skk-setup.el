@@ -1,13 +1,13 @@
 ;;; skk-setup.el --- initial setup for SKK  -*- emacs-lisp -*-
-;; This file was generated automatically by SKK-MK at Mon Nov 22 15:14:28 2010
+;; This file was generated automatically by SKK-MK at Tue Feb 25 15:20:56 2014
 
 ;; Copyright (C) 2000 NAKAJIMA Mikio <minakaji@osaka.email.ne.jp>
 
 ;; Author: NAKAJIMA Mikio <minakaji@osaka.email.ne.jp>
 ;; Maintainer: SKK Development Team <skk@ring.gr.jp>
-;; Version: $Id: skk-setup.el.in,v 1.32 2010/09/13 13:09:27 skk-cvs Exp $
+;; Version: $Id: skk-setup.el.in,v 1.36 2011/12/14 22:32:48 skk-cvs Exp $
 ;; Keywords: japanese, mule, input method
-;; Last Modified: $Date: 2010/09/13 13:09:27 $
+;; Last Modified: $Date: 2011/12/14 22:32:48 $
 
 ;; This file is part of Daredevil SKK.
 
@@ -45,17 +45,22 @@
 (defvar skk-tut-file "/Users/yabe/.emacs.d/share/skk/SKK.tut")
 
 ;;; Isearch setting.
-(add-hook 'isearch-mode-hook
-	  #'(lambda ()
-	      (when (and (boundp 'skk-mode)
-			 skk-mode
-			 skk-isearch-mode-enable)
-		(skk-isearch-mode-setup))))
-(add-hook 'isearch-mode-end-hook
-	  #'(lambda ()
-	      (when (and (featurep 'skk-isearch)
-			 skk-isearch-mode-enable)
-		(skk-isearch-mode-cleanup))))
+(defun skk-isearch-setup-maybe ()
+  (require 'skk-vars)
+  (when (or (eq skk-isearch-mode-enable 'always)
+	    (and (boundp 'skk-mode)
+		 skk-mode
+		 skk-isearch-mode-enable))
+    (skk-isearch-mode-setup)))
+
+(defun skk-isearch-cleanup-maybe ()
+  (require 'skk-vars)
+  (when (and (featurep 'skk-isearch)
+	     skk-isearch-mode-enable)
+    (skk-isearch-mode-cleanup)))
+
+(add-hook 'isearch-mode-hook #'skk-isearch-setup-maybe)
+(add-hook 'isearch-mode-end-hook #'skk-isearch-cleanup-maybe)
 
 (provide 'skk-setup)
 

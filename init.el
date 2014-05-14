@@ -70,6 +70,8 @@
   '(
     ag
     anything
+    auto-complete
+    org
     init-loader
     json-mode
     migemo
@@ -81,7 +83,11 @@
     yaml-mode
     yasnippet
     recentf-ext
-    
+    markdown-mode
+    open-junk-file
+    powerline
+    zenburn-theme
+    helm
     )
   "A list of package to install from MELPA at launch.")
 

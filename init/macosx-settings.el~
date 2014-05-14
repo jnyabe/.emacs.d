@@ -18,4 +18,3 @@
 (setq face-font-rescale-alist
       '((".*Hiragino_Mincho_pro.*" . 1.2)))
 
-(setq default-input-method "MacOSX")

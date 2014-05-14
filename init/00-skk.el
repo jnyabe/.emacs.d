@@ -1,4 +1,7 @@
 ;;; SKK
+
+(add-to-list 'load-path "~/.emacs.d/elisp/skk")
+(require 'skk-autoloads)
 (global-set-key "\C-x\C-j" 'skk-mode)
 (global-set-key "\C-xj" 'skk-auto-fill-mode)
 (global-set-key "\C-xt" 'skk-tutorial)
@@ -17,7 +20,7 @@
 			   (skk-isearch-mode-cleanup)
 			   (skk-set-cursor-color-properly)))))
 (setq skk-egg-like-newline t)
-(setq skk-large-jisyo "~/.emacs.d/share/skk/SKK-JISYO.L")
+(setq skk-large-jisyo "~/.emacs.d/etc/skk/SKK-JISYO.L")
 ;(skk-make-face 'Black/yellow)
 (setq skk-henkan-face 'Black/yellow)
 (setq skk-date-ad t)

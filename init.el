@@ -3,15 +3,11 @@
       (append 
        (list
 	(expand-file-name "~/.emacs.d")
+	(expand-file-name "~/.emacs.d/init")
 	(expand-file-name "~/.emacs.d/lisp/init")
 	(expand-file-name "~/.emacs.d/lisp")
-	(expand-file-name "~/.emacs.d/init")
-	(expand-file-name "~/.emacs.d/auto-install")
-	(expand-file-name "~/.emacs.d/plugins")
-	(expand-file-name "~/.emacs.d/lisp/skk")
 	"/Applications/Emacs.app/Contents/Resources/site-lisp"
 	"/Applications/Emacs.app/Contents/Resources/lisp"
-        (expand-file-name "/usr/local/share/emacs/site-lisp/mew")
 	) load-path ))
 
 ;; OS depend settings
@@ -57,31 +53,67 @@
 ;;(menu-bar-mode -1)
 
 
+
+;; package.el
+(require 'package)
+(setq package-user-dir "~/.emacs.d/elisp/elpa/")
+(add-to-list 'package-archives 
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
+(setq url-proxy-services 
+      '(("http" . "proxy.hq.scei.sony.co.jp:8080")
+	("https" . "proxy.hq.scei.sony.co.jp:8080")))
+
+;; Packages to install from MELPA
+(defvar my/packages
+  '(
+    ag
+    anything
+    init-loader
+    json-mode
+    migemo
+    psvn
+    py-autopep8
+    pydoc-info
+    sqlite
+    ssh
+    yaml-mode
+    yasnippet
+    recentf-ext
+    
+    )
+  "A list of package to install from MELPA at launch.")
+
+;; Install Melpa packages
+(dolist (package my/packages)
+  (when (or (not (package-installed-p package)))
+    (package-install package)))
+
+;; el-get
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; (unless (require 'el-get nil 'noerror)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+;;     (goto-char (point-max))
+;;     (eval-print-last-sexp)))
+
+;; (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;; (el-get 'sync '(
+;;                 howm
+;;                 ddskk
+;;                 navi2ch
+;;                 ))
+
+;; Init-Loader
 (require 'init-loader)
 (setq init-loader-show-log-after-init nil)
 (init-loader-load "~/.emacs.d/init")
 
-;;(load "setup_skk") ;; SKK 
-;;(load "setup_fontlock") ;; fontlock
-;;(load "setup_ccmode") ;; cc-mode
-;;(load "setup_matlab") ;; matlab-mode
-;;(load "setup_navi2ch") ;; navi2ch
-;;(load "setup_gtags") ;; gtag
-;;(load "setup_gauche") ;; Gauche
-;;(load "setup_setnu") ;; setnu
-;;(load "setup_lookup")
-;;(load "setup_mew")
-;;(load "setup_anything") ;; anything
-;;(load "setup_autocomplete") ;; autocomplete
-;;(load "setup_yasnippet.el") ;; yasnisppet
-;;(load "setup_moccur") ;; moccur
-;;(load "setup_wdired") ;; wdired
-;;(load "setup_autoinstall") ;; auto-install
-;;(load "setup_auto_async_byte_compile") ;; auto-async-byte-compile
 
-;;(require 'auto-complete-extension)
 
-(load "yasima")
+;; (load "yasima")
 ;;(set-language-environment "Japanese")
 (add-hook 'set-language-environment-hook 
 	  (lambda ()
@@ -94,7 +126,6 @@
 
 (set-language-environment "Japanese")
 ;; Language Setting (Japanese)
-
 ;(set-default-coding-systems 'utf-8)
 ;(set-keyboard-coding-system 'utf-8)
 ;(set-terminal-coding-system 'utf-8)
@@ -102,4 +133,6 @@
 
 (setq visible-bell t)
 ;; (cd "~/")
+
+
 

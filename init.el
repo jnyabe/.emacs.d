@@ -42,10 +42,10 @@
 
 ;; Color setting 
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
-(set-foreground-color "white")
-(set-background-color "#333333")
-(set-cursor-color     "green")
-(setq transient-mark-mode t)
+;;(set-foreground-color "white")
+;;(set-background-color "#333333")
+;;(set-cursor-color     "green")
+;;(setq transient-mark-mode t)
 
 ;; Disable bars
 (scroll-bar-mode -1)
@@ -88,6 +88,11 @@
     powerline
     zenburn-theme
     helm
+    helm-ag
+    helm-descbinds
+    helm-ls-git
+    ruby-mode
+    wdired
     )
   "A list of package to install from MELPA at launch.")
 
@@ -139,6 +144,3 @@
 
 (setq visible-bell t)
 ;; (cd "~/")
-
-
-

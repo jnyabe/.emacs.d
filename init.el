@@ -79,12 +79,14 @@
     py-autopep8
     pydoc-info
     sqlite
+    scala-mode
     ssh
     yaml-mode
     yasnippet
     recentf-ext
     markdown-mode
     open-junk-file
+    tuareg
     powerline
     zenburn-theme
     helm

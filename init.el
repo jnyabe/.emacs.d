@@ -2,7 +2,6 @@
 (setq load-path
       (append 
        (list
-	(expand-file-name "~/.emacs.d")
 	(expand-file-name "~/.emacs.d/init")
 	(expand-file-name "~/.emacs.d/lisp/init")
 	(expand-file-name "~/.emacs.d/lisp")
@@ -61,9 +60,28 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
-(setq url-proxy-services 
-      '(("http" . "proxy.hq.scei.sony.co.jp:8080")
-	("https" . "proxy.hq.scei.sony.co.jp:8080")))
+
+(defun enable-office-proxy ()
+  (interactive)
+  (setq url-proxy-services
+	'(("http" . "proxy.hq.scei.sony.co.jp:8080")
+	  ("https" . "proxy.hq.scei.sony.co.jp:8080")))
+  (message "office proxy is enabled"))
+
+(defun disable-office-proxy ()
+  (interactive)
+  (setq url-proxy-services nil)
+  (message "office proxy is disabled"))
+
+(defun office-proxy-auto-setting ()
+  (interactive)
+  (with-temp-buffer
+    (call-process "hostname" nil t)
+    (goto-char (point-min))
+    (if (search-forward "scei.sony.co.jp" nil t)
+	(enable-office-proxy)
+      (disable-office-proxy))))
+(office-proxy-auto-setting)
 
 ;; Packages to install from MELPA
 (defvar my/packages

@@ -41,10 +41,10 @@
 
 ;; Color setting 
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
-(set-foreground-color "white")
-(set-background-color "#333333")
-(set-cursor-color     "green")
-(setq transient-mark-mode t)
+;;(set-foreground-color "white")
+;;(set-background-color "#333333")
+;;(set-cursor-color     "green")
+;;(setq transient-mark-mode t)
 
 ;; Disable bars
 (scroll-bar-mode -1)
@@ -97,15 +97,22 @@
     py-autopep8
     pydoc-info
     sqlite
+    scala-mode
     ssh
     yaml-mode
     yasnippet
     recentf-ext
     markdown-mode
     open-junk-file
+    tuareg
     powerline
     zenburn-theme
     helm
+    helm-ag
+    helm-descbinds
+    helm-ls-git
+    ruby-mode
+    wdired
     )
   "A list of package to install from MELPA at launch.")
 
@@ -132,7 +139,7 @@
 
 ;; Init-Loader
 (require 'init-loader)
-(setq init-loader-show-log-after-init nil)
+(setq init-loader-show-log-after-init 'error-only)
 (init-loader-load "~/.emacs.d/init")
 
 
@@ -148,15 +155,13 @@
 	      (setq buffer-file-coding-system' 'utf-8))))
 
 
-(set-language-environment "Japanese")
+;;(set-language-environment "Japanese")
 ;; Language Setting (Japanese)
-;(set-default-coding-systems 'utf-8)
-;(set-keyboard-coding-system 'utf-8)
-;(set-terminal-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 ;(set-buffer-file-coding-system 'utf-8)
 
 (setq visible-bell t)
 ;; (cd "~/")
-
-
-

@@ -2,7 +2,7 @@
 (setq load-path
       (append 
        (list
-	(expand-file-name "~/.emacs.d")
+;;	(expand-file-name "~/.emacs.d")
 	(expand-file-name "~/.emacs.d/init")
 	(expand-file-name "~/.emacs.d/lisp/init")
 	(expand-file-name "~/.emacs.d/lisp")
@@ -61,6 +61,8 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
+
+
 (setq url-proxy-services 
       '(("http" . "proxy.hq.scei.sony.co.jp:8080")
 	("https" . "proxy.hq.scei.sony.co.jp:8080")))
@@ -94,6 +96,8 @@
     helm-descbinds
     helm-ls-git
     ruby-mode
+    go-mode
+;;    flymake-go
     wdired
     )
   "A list of package to install from MELPA at launch.")

@@ -88,7 +88,7 @@
 (defvar my/packages
   '(
     ag
-    anything
+;;  anything
     auto-complete
     org
     init-loader
@@ -110,7 +110,10 @@
     zenburn-theme
     helm
     helm-ag
+    helm-c-moccur
     helm-descbinds
+    helm-gtags
+    wgrep-helm
     helm-ls-git
     ruby-mode
     go-mode

@@ -4,7 +4,7 @@
 (setq exec-path (cons "c:\\cygwin\\usr\\local\\bin" exec-path))
 
 ;; Shell-mode
-(setq explicit-shell-file-name "tcsh.exe")
+(setq explicit-shell-file-name "zsh.exe")
 (setq shell-file-name "sh.exe")
 (setq shell-command-switch "-c")
 (modify-coding-system-alist 'process ".*sh\\.exe" '(undecided-dos . euc-japan))

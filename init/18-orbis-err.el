@@ -2,6 +2,3 @@
   "Find error code"
   (interactive "B")
   (message "[ORBIS] Error Code: %#x" errcode))
-  
-   
-  

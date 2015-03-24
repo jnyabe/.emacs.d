@@ -78,7 +78,8 @@
   (with-temp-buffer
     (call-process "hostname" nil t)
     (goto-char (point-min))
-    (if (search-forward "scei.sony.co.jp" nil t)
+    (if (or (search-forward "scei.sony.co.jp" nil t)
+	    (search-forward "carlisle" nil t))
 	(enable-office-proxy)
       (disable-office-proxy))))
 (office-proxy-auto-setting)

@@ -6,7 +6,8 @@
 ;; English
  (set-face-attribute 'default nil
              :family "Menlo" ;; font
-             :height 120)    ;; font size
+;;             :height 140)    ;; font size
+             :height 180)    ;; font size
 
 ;; Japanese
 (set-fontset-font
@@ -15,7 +16,15 @@
   (font-spec :family "Hiragino Kaku Gothic ProN")) ;; font
 
 ;; 
-(setq face-font-rescale-alist
-      '((".*Hiragino_Mincho_pro.*" . 1.2)))
+(add-to-list 'face-font-rescale-alist
+	     '(".*Hiragino_Mincho_pro.*" . 1.2))
+
 
 (setq default-input-method "MacOSX")
+;;(global-set-key [(control ?+)] (lambda () (interactive) (text-scale-increase 1)))
+;;(global-set-key [(control ?-)] (lambda () (interactive) (text-scale-decrease 1)))
+;;(global-set-key [(control ?-)] (lambda () (interactive) (text-scale-decrease 0)))
+
+(global-set-key [(control ?+)] (lambda () (interactive) (text-scale-increase 1)))
+(global-set-key [(control ?-)] (lambda () (interactive) (text-scale-decrease 1)))
+(global-set-key [(control ?-)] (lambda () (interactive) (text-scale-decrease 0)))

@@ -118,8 +118,11 @@
     helm-ls-git
     ruby-mode
     go-mode
+    csharp-mode
 ;;    flymake-go
     wdired
+    haskell-mode
+    mode-icons
     )
   "A list of package to install from MELPA at launch.")
 

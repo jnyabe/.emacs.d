@@ -49,7 +49,7 @@
 ;; Disable bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 
 
 
@@ -88,6 +88,7 @@
 ;; Packages to install from MELPA
 (defvar my/packages
   '(
+;;    magit
     ag
 ;;  anything
     auto-complete
@@ -123,6 +124,7 @@
     wdired
     haskell-mode
     mode-icons
+    markdown-mode
     )
   "A list of package to install from MELPA at launch.")
 
@@ -175,3 +177,6 @@
 
 (setq visible-bell t)
 ;; (cd "~/")
+(put 'set-goal-column 'disabled nil)
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)

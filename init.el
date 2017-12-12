@@ -9,15 +9,6 @@
 	"/Applications/Emacs.app/Contents/Resources/lisp"
 	) load-path ))
 
-;; OS depend settings
-(cond ((string= window-system "ns")
-       (load "macosx-settings"))
-      ((string= window-system "w32")
-       (load "windows-settings"))
-      ((string= window-system "x")
-       (load "linux-settings"))
-      ((not window-system)
-       (load "console-settings")))
 
 ;; Machine depend settings
 (cond
@@ -123,6 +114,7 @@
     wdired
     haskell-mode
     mode-icons
+    cygwin-mount
     )
   "A list of package to install from MELPA at launch.")
 
@@ -165,6 +157,16 @@
 	      (setq buffer-file-coding-system' 'utf-8))))
 
 
+;; OS depend settings
+(cond ((string= window-system "ns")
+       (load "macosx-settings"))
+      ((string= window-system "w32")
+       (load "windows-settings"))
+      ((string= window-system "x")
+       (load "linux-settings"))
+      ((not window-system)
+       (load "console-settings")))
+
 ;;(set-language-environment "Japanese")
 ;; Language Setting (Japanese)
 (set-language-environment 'utf-8)
@@ -175,3 +177,19 @@
 
 (setq visible-bell t)
 ;; (cd "~/")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (zenburn-theme yasnippet yaml-mode wgrep-helm tuareg ssh sqlite scala-mode recentf-ext pydoc-info py-autopep8 psvn powerline open-junk-file mode-icons migemo markdown-mode json-mode init-loader helm-ls-git helm-gtags helm-descbinds helm-c-moccur helm-ag haskell-mode go-mode csharp-mode auto-complete ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-errline ((((class color)) (:background "RoyalBlue4"))))
+ '(flymake-warnline ((((class color)) (:background "SlateBlue4")))))
+(server-start)

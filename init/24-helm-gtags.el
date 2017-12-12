@@ -5,6 +5,7 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'java-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode 'helm-gtags-mode)
+(add-hook 'csharp-mode-hook 'helm-gtags-mode)
 
 ;; switch header/cpp files
 ;; (defun helm-gtags-find-file-toggle-header-source ()

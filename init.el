@@ -40,7 +40,7 @@
 ;; Disable bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 
 
 
@@ -79,6 +79,7 @@
 ;; Packages to install from MELPA
 (defvar my/packages
   '(
+;;    magit
     ag
 ;;  anything
     auto-complete
@@ -115,6 +116,7 @@
     haskell-mode
     mode-icons
     cygwin-mount
+    markdown-mode
     )
   "A list of package to install from MELPA at launch.")
 
@@ -193,3 +195,7 @@
  '(flymake-errline ((((class color)) (:background "RoyalBlue4"))))
  '(flymake-warnline ((((class color)) (:background "SlateBlue4")))))
 (server-start)
+
+(put 'set-goal-column 'disabled nil)
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+

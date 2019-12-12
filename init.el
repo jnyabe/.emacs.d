@@ -52,29 +52,6 @@
 
 (package-initialize)
 
-(defun enable-office-proxy ()
-  (interactive)
-  (setq url-proxy-services
-	'(("http" . "proxy.hq.scei.sony.co.jp:8080")
-	  ("https" . "proxy.hq.scei.sony.co.jp:8080")))
-  (message "office proxy is enabled"))
-
-(defun disable-office-proxy ()
-  (interactive)
-  (setq url-proxy-services nil)
-  (message "office proxy is disabled"))
-
-(defun office-proxy-auto-setting ()
-  (interactive)
-  (with-temp-buffer
-    (call-process "hostname" nil t)
-    (goto-char (point-min))
-    (if (or (search-forward "scei.sony.co.jp" nil t)
-	    (search-forward "carlisle" nil t))
-	(enable-office-proxy)
-      (disable-office-proxy))))
-(office-proxy-auto-setting)
-
 
 ;; Packages to install from MELPA
 (defvar my/packages
@@ -87,7 +64,7 @@
     init-loader
     json-mode
     migemo
-    psvn
+;;    psvn
     py-autopep8
     pydoc-info
     sqlite
@@ -115,7 +92,7 @@
     wdired
     haskell-mode
     mode-icons
-    cygwin-mount
+;;    cygwin-mount
     markdown-mode
     )
   "A list of package to install from MELPA at launch.")
@@ -186,14 +163,14 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zenburn-theme yasnippet yaml-mode wgrep-helm tuareg ssh sqlite scala-mode recentf-ext pydoc-info py-autopep8 psvn powerline open-junk-file mode-icons migemo markdown-mode json-mode init-loader helm-ls-git helm-gtags helm-descbinds helm-c-moccur helm-ag haskell-mode go-mode csharp-mode auto-complete ag))))
+    (flycheck-plantuml plantuml-mode add-node-modules-path js-auto-format-mode zenburn-theme yasnippet yaml-mode wgrep-helm tuareg ssh sqlite scala-mode recentf-ext pydoc-info py-autopep8 psvn powerline open-junk-file mode-icons migemo markdown-mode json-mode init-loader helm-ls-git helm-gtags helm-descbinds helm-c-moccur helm-ag haskell-mode go-mode csharp-mode auto-complete ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flymake-errline ((((class color)) (:background "RoyalBlue4"))))
- '(flymake-warnline ((((class color)) (:background "SlateBlue4")))))
+ '(flymake-error ((((class color)) (:background "RoyalBlue4"))))
+ '(flymake-warning ((((class color)) (:background "SlateBlue4")))))
 (server-start)
 
 (put 'set-goal-column 'disabled nil)

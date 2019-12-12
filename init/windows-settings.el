@@ -13,11 +13,11 @@
 
 ;; Cygwin-mount
 ;; (load "init_cygwin_mount")
-(require 'cygwin-mount)
-(cygwin-mount-activate)
+;; (require 'cygwin-mount)
+;; (cygwin-mount-activate)
 
 ;;; Font
-(set-frame-font "VL ゴシック-12")
+(set-frame-font "VL ゴシック-14")
 (set-face-attribute 'fixed-pitch    nil :family "VL ゴシック")
 (set-face-attribute 'variable-pitch nil :family "VL ゴシック")
 
